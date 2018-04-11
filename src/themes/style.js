@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center'
     },
+
+    //welcomeScene
     logo:{
         alignSelf: 'center',
         backgroundColor: '#FFA040',
@@ -26,6 +28,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: defaultFontSize * 0.7
     },
+
+
+    //loginScene
     inputWrapper:{
         height: 60,
         flexDirection: 'row',
@@ -34,6 +39,7 @@ const styles = StyleSheet.create({
     },
     iconInput: {
         width: 60,
+        justifyContent: 'center',
         backgroundColor: '#2d2c33',
         borderTopLeftRadius: 5,
         borderBottomLeftRadius: 5
@@ -42,6 +48,7 @@ const styles = StyleSheet.create({
         width: 250,
         justifyContent: 'center',
         backgroundColor: '#41414a',
+        paddingLeft: 10,
         borderTopRightRadius: 5,
         borderBottomRightRadius: 5
     },
@@ -54,37 +61,57 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 25
     },
-
-
-
-    top:{
-        height: 200,
-        alignItems: 'center',
-        justifyContent: 'center'
+    myButton:{
+        borderRadius: 5,
+        backgroundColor: '#FFA040',
+        height: 60,
+        width: 310,
+        margin: 10,
+        justifyContent: 'center',
+        alignSelf: 'center'
     },
-    navigation:{
-        height: 100,
-        justifyContent: 'center'
-    },
-    companyName:{
-        fontWeight: "bold",
-        color: "#fff",
-        marginTop: 15,
-        fontSize: defaultFontSize * 3
-    },
-    button:{
-        borderRadius: 30,
-        backgroundColor: "#27ae60",
-        padding: 15,
-        marginLeft: 30,
-        marginRight: 30
-    },
-    buttonInside:{
+    myButtonInside:{
         alignSelf: 'center',
-        color: "#fff",
-        fontWeight: 'bold',
-        fontSize: defaultFontSize * 1.5
+        color: "#dcdde1",
+        fontSize: defaultFontSize * 1.1
     },
+
+    //taskListScenes
+    header:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        borderBottomColor: '#41414a',
+        borderBottomWidth: 0.5
+    },
+    headerText:{
+        fontSize: defaultFontSize * 1.1,
+        color: '#dcdde1'
+    },
+    layout:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
+    nav:{
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        height: 50,
+        borderTopColor: '#41414a',
+        borderTopWidth: 0.5,
+        paddingTop: 5
+    },
+    navButton: {
+        alignSelf: 'center',
+    },
+    navButtonText:{
+        fontSize: defaultFontSize * 0.8,
+        color: '#dcdde1'
+    },
+
+
+
+
     inputWrapperTop:{
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15
