@@ -7,7 +7,9 @@ import style from '../themes/style';
 
 const Button = (props) => (
         <TouchableOpacity
-            style={ style.myButton }>
+            style={ style.myButton }
+            onPress={ props.click }
+        >
             <Text style={ style.myButtonInside }> { props.text } </Text>
         </TouchableOpacity>
     );

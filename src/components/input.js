@@ -1,7 +1,7 @@
 import { View, TextInput } from 'react-native';
 import React from 'react';
 
-//import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import style from '../themes/style';
 
 
@@ -10,15 +10,17 @@ const Input = (props) => {
     return(
 
             <View style={ style.inputWrapper}>
-                <View style={style.iconInput}>
-                    <View style={ { width:20, height:20, backgroundColor:'#487eb0', alignSelf:'center' } }></View>
+                <View style={ style.iconInput }>
+                    <Icon name={props.name}
+                          size={50}
+                          color={props.color?props.color:"#999"}
+                    />
                 </View>
                 <View style={style.fieldInput}>
                     <TextInput
-                        //style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                         placeholder={props.placeholder}
                         placeholderTextColor={'#858491'}
-                        textDecorationLine={'none'}
+                        //textDecorationLine={'none'}
                         underlineColorAndroid={'transparent'}
                         //defaultValue={props.placeholder}
                         fontSize={ 18 }

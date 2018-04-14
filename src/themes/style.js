@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     iconInput: {
         width: 60,
         justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#2d2c33',
         borderTopLeftRadius: 5,
         borderBottomLeftRadius: 5

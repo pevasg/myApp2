@@ -1,30 +1,54 @@
 import { View, Text} from 'react-native';
-import React from 'react';
+import React, {Component} from 'react';
+import {Actions} from 'react-native-router-flux';
 
-//import Icon from 'react-native-vector-icons';
+
 import style from '../themes/style';
 import Input from '../components/input';
 import Button from '../components/button';
 
+class loginScene extends Component {
+    loginButtonPress() {
+        //http
+        Actions.welcome();
+        setTimeout(Actions.taskList(), 10000);
+    }
 
-const loginScene = (props) => (
-    <View style={ style.container }>
-        <Input placeholder='Login With Google +'/>
-        <Input placeholder='Login With Facebook'/>
-        <View style={ style.smallBlock }>
-            <Text style={ style.smallText }>OR</Text>
-        </View>
-            <Input placeholder='Username'/>
-        <Input placeholder='Email'/>
-        <Input placeholder='Password'/>
-        <View>
-        <Button
-            text='REGISTER'
-        />
-        </View>
-    </View>
+//const loginScene = (props) => (
+    render() {
+        return (
+            <View style={style.container}>
+                <Input placeholder='Login With Google +'
+                       name='sc-google-plus'
+                       color='#e84118'
+                />
+                <Input placeholder='Login With Facebook'
+                       name='sc-facebook'
+                       color='#1e3799'
+                />
+                <View style={style.smallBlock}>
+                    <Text style={style.smallText}>OR</Text>
+                </View>
+                <Input placeholder='Username'
+                       name='user'
+                />
+                <Input placeholder='Email'
+                       name='envelope'
+                />
+                <Input placeholder='Password'
+                       name='lock'
+                />
+                <View>
+                    <Button
+                        text='REGISTER'
+                        click={ this.loginButtonPress.bind(this) }
+                    />
+                </View>
+            </View>
 
-);
+        );
+    }
+}
 
 
 
