@@ -11,7 +11,7 @@ class loginScene extends Component {
     loginButtonPress() {
         //http
         Actions.welcome();
-        setTimeout(Actions.taskList(), 10000);
+        setTimeout(Actions.taskList, 1000);
     }
 
 //const loginScene = (props) => (

@@ -1,5 +1,5 @@
 import { View, TextInput } from 'react-native';
-import React from 'react';
+import React, {Component} from 'react';
 
 import Icon from 'react-native-vector-icons/EvilIcons';
 import style from '../themes/style';

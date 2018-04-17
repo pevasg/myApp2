@@ -1,5 +1,6 @@
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text} from 'react-native';
 import React from 'react';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
 import style from '../themes/style';
 
@@ -7,11 +8,11 @@ import style from '../themes/style';
 
 const navButton = (props) => (
     <TouchableOpacity
-        style={ style.navButton }>
-        //View style=  width:20, height:20, backgroundColor:'#487eb0', alignSelf:'center'
-        //View
+        style={ style.navButton }
         onPress={ props.click }
-        <Text style={ style.navButtonText}> { props.title } </Text>
+    >
+        <Icon style={ style.navIcon } name={props.name} size={35} />
+        <Text style={ style.navButtonText }> { props.title } </Text>
     </TouchableOpacity>
 );
 

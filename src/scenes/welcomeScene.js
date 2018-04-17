@@ -11,9 +11,8 @@ const welcomeScene = () => (
                     height: 100,
                     width: 100,
                     margin: 10} }
-                //sourсe={ require('../themes/galLuxY.png') }
-                //sourсe={ require('./check.png') }
-                source={ {uri: 'https://image.flaticon.com/icons/png/512/128/128384.png'} }
+                source={require('../themes/128384.png')}
+                //source={ {uri: 'https://image.flaticon.com/icons/png/512/128/128384.png'} }
             />
         </View>
         <View>

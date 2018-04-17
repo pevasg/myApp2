@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 50,
         borderBottomColor: '#41414a',
-        borderBottomWidth: 0.5
+        borderBottomWidth: 1
     },
     headerText:{
         fontSize: defaultFontSize * 1.1,
@@ -99,28 +99,30 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         height: 50,
         borderTopColor: '#41414a',
-        borderTopWidth: 0.5,
+        borderTopWidth: 1,
         paddingTop: 5
     },
     navButton: {
         alignSelf: 'center',
     },
     navButtonText:{
-        fontSize: defaultFontSize * 0.8,
-        color: '#dcdde1'
+        fontSize: defaultFontSize * 0.7,
+        color: '#858491'
     },
-
-
-
-
-    inputWrapperTop:{
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15
+    navIcon:{
+        color: '#dcdde1',
+        alignSelf: 'center'
     },
-    inputWrapperBottom:{
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15
+    navIcon2: {
+        color: '#dcdde1',
+        alignSelf: 'flex-end',
+        alignItems: 'flex-end',
+        zIndex: 10,
+        //position: 'absoluteFillObject',
+        //top: 10,
+        backgroundColor: '#fff'
     }
+
 });
 
 export default styles;
