@@ -7,8 +7,23 @@ import style from '../themes/style';
 import Header from '../components/header';
 import Layout from '../components/layout';
 import Nav from '../components/nav';
+//import {getCafes} from '../actions/cafeActions';
 
-//const taskListScene = () => (
+//constructor(){
+//    this.state={ cafes:[] }
+//}
+//
+//componentWillMount(){
+//
+//}
+//
+//renderCafes(){
+//    render(
+//        this.state.render.cafes
+//    )
+//}
+
+
 class taskListScene extends Component {
     render() {
         return (
