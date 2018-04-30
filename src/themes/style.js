@@ -2,6 +2,29 @@ import { StyleSheet } from 'react-native';
 
 const defaultFontSize = 20;
 
+export const cafeListStyle = StyleSheet.create({
+    cafeWrap:{
+        flex: 1,
+        margin: 5,
+        padding: 5,
+        backgroundColor: '#858491',
+        borderRadius: 5,
+        //flexDirection: 'row'
+    },
+    imageWrap:{
+        paddingRight: 5,
+        flex: 1
+    },
+    image:{
+        width: 100,
+        height: 100
+    },
+    title:{
+        fontSize: 20,
+        color: '#000000'
+    }
+});
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#323138',
@@ -92,8 +115,8 @@ const styles = StyleSheet.create({
     },
     layout:{
         justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1
+        //alignItems: 'center',
+        flex: 1,
     },
     nav:{
         flexDirection: 'row',

@@ -6,6 +6,7 @@ import {Actions} from 'react-native-router-flux';
 import style from '../themes/style';
 import Input from '../components/input';
 import Button from '../components/button';
+import {checkAuth} from '../actions/authActions'
 
 class loginScene extends Component {
     constructor(){
@@ -16,6 +17,11 @@ class loginScene extends Component {
             colorRegister:'#41414a'
         };
     };
+
+    //componentWillMount(){
+    //    checkAuth();
+    //}
+
     loginButtonPress() {
         if (this.state.colorLogin==='#FFA040') {
             //http
@@ -24,6 +30,7 @@ class loginScene extends Component {
         }
         else if (this.state.colorLogin==='#41414a') {
             this.setState ( prevState =>{
+                console.log(prevState);
                 return { isShow: true,
                     colorLogin:'#FFA040',
                     colorRegister:'#41414a'
@@ -38,6 +45,7 @@ class loginScene extends Component {
         }
         else if (this.state.colorRegister==='#41414a') {
             this.setState( prevState => {
+                console.log(prevState);
                 return {
                     isShow: false,
                     colorLogin: '#41414a',
