@@ -22,6 +22,21 @@ export const cafeListStyle = StyleSheet.create({
     title:{
         fontSize: 20,
         color: '#000000'
+    },
+    loader:{
+        paddingTop: 25,
+        alignSelf: 'center'
+    }
+});
+
+export const taskSceneStyle = StyleSheet.create({
+    mainImage:{
+        width:"100%",
+        height:250
+    },
+    title:{
+        color:"#ecf0f1",
+        fontSize:20
     }
 });
 

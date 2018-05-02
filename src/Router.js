@@ -7,6 +7,7 @@ import taskListScene from "./scenes/taskListScene";
 import setupAppScene from "./scenes/setupAppScene";
 import addTaskScene from "./scenes/addTaskScene";
 import calendarScene from "./scenes/calendarScene";
+import taskScene from "./scenes/taskScene";
 //import App from './scenes/taskListScene';
 //import App from './scenes/calendarScene';
 //import App from './scenes/setupAppScene';
@@ -21,7 +22,7 @@ class Routerss extends React.Component {
                     <Scene key="login"
                            component={loginScene}
                            title="login"
-                           initial
+                           //initial
                            hideNavBar
                     />
 
@@ -39,10 +40,16 @@ class Routerss extends React.Component {
                     <Scene key="taskList"
                            component={taskListScene}
                            title=""
+                           initial
                            hideNavBar
                     />
                     <Scene key="addTask"
                            component={addTaskScene}
+                           title=""
+                           hideNavBar
+                    />
+                    <Scene key="task"
+                           component={taskScene}
                            title=""
                            hideNavBar
                     />
