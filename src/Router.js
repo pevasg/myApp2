@@ -22,7 +22,7 @@ class Routerss extends React.Component {
                     <Scene key="login"
                            component={loginScene}
                            title="login"
-                           //initial
+                           initial
                            hideNavBar
                     />
 
@@ -40,7 +40,7 @@ class Routerss extends React.Component {
                     <Scene key="taskList"
                            component={taskListScene}
                            title=""
-                           initial
+                           //initial
                            hideNavBar
                     />
                     <Scene key="addTask"

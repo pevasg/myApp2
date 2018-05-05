@@ -1,6 +1,6 @@
 import axios from 'axios';
+import {apiUrl} from "../config/constants";
 
-export const apiUrl = 'http://coffee-points.dev2.devloop.pro';
 // не відображає зображення з api cafes  ???
 export const getCafes = (params) =>
     axios.get(apiUrl + '/api/cafes').then(response=> {

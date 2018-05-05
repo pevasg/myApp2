@@ -13,7 +13,7 @@ export const cafeListStyle = StyleSheet.create({
     },
     imageWrap:{
         paddingRight: 5,
-        flex: 1
+        flex: 1,
     },
     image:{
         width: 100,
@@ -30,9 +30,11 @@ export const cafeListStyle = StyleSheet.create({
 });
 
 export const taskSceneStyle = StyleSheet.create({
-    mainImage:{
-        width:"100%",
-        height:250
+    mainImage: {
+        width: 350,
+        height: 350,
+        alignSelf: 'center',
+        backgroundColor: '#fff'
     },
     title:{
         color:"#ecf0f1",
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
         color: '#dcdde1'
     },
     layout:{
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         //alignItems: 'center',
         flex: 1,
     },

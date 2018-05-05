@@ -1,4 +1,4 @@
-import { View, Text} from 'react-native';
+import { View, Text, KeyboardAvoidingView} from 'react-native';
 import React, {Component} from 'react';
 import {Actions} from 'react-native-router-flux';
 
@@ -6,7 +6,9 @@ import {Actions} from 'react-native-router-flux';
 import style from '../themes/style';
 import Input from '../components/input';
 import Button from '../components/button';
-import {checkAuth} from '../actions/authActions'
+import {checkAuth} from '../actions/authActions';
+import {signIn, signUp} from "../actions/authActions";
+import Loader from "../components/loader";
 
 class loginScene extends Component {
     constructor(){
@@ -14,23 +16,37 @@ class loginScene extends Component {
         this.state = {
             isShow:true,
             colorLogin:'#FFA040',
-            colorRegister:'#41414a'
+            colorRegister:'#41414a',
+            name: '',
+            email: '',
+            password: '',
+            loading: false
         };
     };
 
-    //componentWillMount(){
-    //    checkAuth();
-    //}
+    componentWillMount(){
+        checkAuth();
+    }
 
     loginButtonPress() {
         if (this.state.colorLogin==='#FFA040') {
             //http
-            Actions.welcome();
-            setTimeout(Actions.taskList, 1000);
+            //const {email, password} = this.state;
+            this.setState({loading:true});
+            signIn(this.state)
+                .then(()=>{Actions.welcome();
+                    setTimeout(Actions.taskList, 1000)})
+                .catch((error)=>{alert(error)})
+                .finally(()=>{
+                    this.setState({loading:false})
+                });
+
+           // Actions.welcome();
+            //setTimeout(Actions.taskList, 1000);
         }
         else if (this.state.colorLogin==='#41414a') {
             this.setState ( prevState =>{
-                console.log(prevState);
+                //console.log(prevState);
                 return { isShow: true,
                     colorLogin:'#FFA040',
                     colorRegister:'#41414a'
@@ -42,10 +58,17 @@ class loginScene extends Component {
     registerButtonPress() {
         if (this.state.colorRegister==='#FFA040') {
             //http
+            this.setState({loading:true});
+            signUp(this.state)
+                .then(Actions.welcome)
+                .catch((error)=>{alert(error)})
+                .finally(()=>{
+                    this.setState({loading:false})
+                });
         }
         else if (this.state.colorRegister==='#41414a') {
             this.setState( prevState => {
-                console.log(prevState);
+                //console.log(prevState);
                 return {
                     isShow: false,
                     colorLogin: '#41414a',
@@ -57,17 +80,18 @@ class loginScene extends Component {
 
     render() {
         return (
-            <View style={style.container}>
+            <KeyboardAvoidingView behavior='padding' style={style.container}>
+                {this.state.loading?<Loader/>:null}
                 <View>
                     {this.state.isShow? <Input placeholder='Login With Google +'
                                                name='sc-google-plus'
-                                               color='#e84118'
+                                               iconColor='#e84118'
                     />:null}
                 </View>
                 <View>
                     {this.state.isShow? <Input placeholder='Login With Facebook'
                                                name='sc-facebook'
-                                               color='#1e3799'
+                                               iconColor='#1e3799'
                     />:null}
                 </View>
                 <View>
@@ -77,15 +101,27 @@ class loginScene extends Component {
                 </View>
                 <View>
                     {this.state.isShow?null:
-                    <Input placeholder='Username'
-                           name='user'
+                    <Input
+                        onChangeText={(name) => this.setState({name})}
+                        value={ this.state.name }
+                        placeholder='name'
+                        name='user'
                     />}
                 </View>
-                <Input placeholder='Email'
-                       name='envelope'
+                <Input
+                    onChangeText={(email) => this.setState({email})}
+                    value={ this.state.email }
+                    keyboardType='email-address'
+                    placeholder='email'
+                    name='envelope'
                 />
-                <Input placeholder='Password'
-                       name='lock'
+                <Input
+                    onChangeText={(password) => this.setState({password})}
+                    value={ this.state.password }
+                    secureTextEntry={true}
+                    keyboardType='numeric'
+                    placeholder='password'
+                    name='lock'
                 />
                 <View style={style.inputWrapper}>
                     <Button
@@ -101,7 +137,7 @@ class loginScene extends Component {
                         width={145}
                     />
                 </View>
-            </View>
+            </KeyboardAvoidingView>
 
         );
     }
