@@ -6,8 +6,9 @@ import {Actions} from 'react-native-router-flux';
 import style from '../themes/style';
 import Input from '../components/input';
 import Button from '../components/button';
-import {checkAuth} from '../actions/authActions';
-import {signIn, signUp} from "../actions/authActions";
+import {signIn, signUp, checkAuth} from "../actions/authActions";
+
+
 import Loader from "../components/loader";
 
 class loginScene extends Component {
@@ -60,7 +61,8 @@ class loginScene extends Component {
             //http
             this.setState({loading:true});
             signUp(this.state)
-                .then(Actions.welcome)
+                .then(()=>{Actions.welcome();
+                    setTimeout(Actions.taskList, 1000)})
                 .catch((error)=>{alert(error)})
                 .finally(()=>{
                     this.setState({loading:false})
