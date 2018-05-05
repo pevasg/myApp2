@@ -1,14 +1,12 @@
 import { View, Text, KeyboardAvoidingView} from 'react-native';
 import React, {Component} from 'react';
 import {Actions} from 'react-native-router-flux';
-
+import {connect} from 'react-redux';
 
 import style from '../themes/style';
 import Input from '../components/input';
 import Button from '../components/button';
 import {signIn, signUp, checkAuth} from "../actions/authActions";
-
-
 import Loader from "../components/loader";
 
 class loginScene extends Component {
@@ -26,7 +24,8 @@ class loginScene extends Component {
     };
 
     componentWillMount(){
-        checkAuth();
+        //checkAuth();
+        console.log('props', this.props);
     }
 
     loginButtonPress() {
@@ -146,6 +145,11 @@ class loginScene extends Component {
 }
 
 
-
-export default loginScene;
+const mapStateToProps = (store) => {
+    const {auth} = store;
+    console.log('store', store);
+    return {auth}
+};
+export default connect(mapStateToProps)(loginScene);
+// export default connect(({auth})=>{ return {auth}})(loginScene);
 
