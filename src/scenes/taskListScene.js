@@ -2,81 +2,86 @@ import { View, Text, ScrollView, TouchableOpacity, Image, Animated } from 'react
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {Actions} from 'react-native-router-flux';
-
+import {connect} from 'react-redux';
 
 import style from '../themes/style';
 import {cafeListStyle} from '../themes/style';
-import Header from '../components/header';
 import Layout from '../components/layout';
-import Nav from '../components/nav';
-import {getCafes} from '../actions/cafeActions';
+import Header from '../components/header';
 import Loader from "../components/loader";
-
+import Nav from '../components/nav';
+import {getCafes, setCafe} from '../actions/cafeActions';
 
 class taskListScene extends Component {
 
-    constructor(){
-        super();
-    this.state={ cafes:[], loading: false }
-}
+    // constructor(){
+    //     super();
+    //     //this.state={ cafes:[], loading: false }
+    // }
 
-componentWillMount(){
+    componentWillMount(){
 
-   //     const prom = new Promise((resolve, reject) =>{
-   //         setTimeout(()=>{
-   //             resolve(Math.random());
-   //         }, 1000);
-   //         setTimeout(()=>{
-   //             reject('regeCt');
-   //         }, 900);
-  //      });
+        //     const prom = new Promise((resolve, reject) =>{
+        //         setTimeout(()=>{
+        //             resolve(Math.random());
+        //         }, 1000);
+        //         setTimeout(()=>{
+        //             reject('regeCt');
+        //         }, 900);
+        //      });
 
-   //     prom
-   //         .then((val)=>{
-   //             console.log(val);
-   //         })
-   //         .catch((val)=>{
-   //             console.log(val);
-   //         });
-
-        this.setState({loading:true});
-        getCafes()
-            .then(cafes=>{
-                this.setState( {cafes} );
-        })
-            .catch(error => {
-                console.log(error)
-        })
-            .finally(()=>{
-                this.setState({loading:false});
-            })
-}
+        //     prom
+        //         .then((val)=>{
+        //             console.log(val);
+        //         })
+        //         .catch((val)=>{
+        //             console.log(val);
+        //         });
 
 
-    taskPress(id) {
-        Actions.task({id})
+        this.props.getCafes();
+        // для ваєрбейз
+        // this.setState({loading:true});
+        // getCafes()
+        //     .then(cafes=>{
+        //         this.setState( {cafes} );
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
+        //     .finally(()=>{
+        //         this.setState({loading:false});
+        //     })
+    }
+
+
+    taskPress(cafe) {
+
+        this.props.setCafe(cafe);
+        Actions.task()
+        //Actions.task({id})
     }
 
 
     renderCafes(){
-        return this.state.cafes.map(cafe => (
-            <TouchableOpacity onPress={this.taskPress.bind(this, cafe.id)} style={cafeListStyle.cafeWrap} key={cafe.id}>
-                <View style={cafeListStyle.imageWrap}>
-                    <Image style={cafeListStyle.image}
-                           source={cafe.image}
-                        //source={cafe.pictures[0] != undefined
-                           // ? {url: '${apiUrl}/${cafe.pictures[0].url}'}
-                           // : require('../themes/galochka.png')
-                       // }
-                    />
-                </View>
-                <View>
-                    <Text style={cafeListStyle.title}>{cafe.id}. {cafe.name}     {cafe.description}</Text>
-                </View>
-            </TouchableOpacity>
+        return this.props.cafes.list.map(cafe => (
+                <TouchableOpacity onPress={this.taskPress.bind(this, cafe)} style={cafeListStyle.cafeWrap} key={cafe.id}>
+                    <View style={cafeListStyle.imageWrap}>
+                        <Image style={cafeListStyle.image}
+                               source={cafe.image}
+                            //source={cafe.pictures[0] != undefined
+                            // ? {url: '${apiUrl}/${cafe.pictures[0].url}'}
+                            // : require('../themes/galochka.png')
+                            // }
+                        />
+                    </View>
+                    <View>
+                        <Text style={cafeListStyle.title}>{cafe.id}. {cafe.name}     {cafe.description}</Text>
+                    </View>
+                </TouchableOpacity>
             )
         );
-}
+    }
 
     //const AnimatedIcon = Animated.createAnimatedComponent(Icon); - для анімації іконок, ще поки не розбрався
 
@@ -88,7 +93,7 @@ componentWillMount(){
                 <Layout>
                     <ScrollView>
 
-                        {this.state.loading ? <Loader/> : null}
+                        {this.props.cafes.loading ? <Loader/> : null}
                         {this.renderCafes()}
                     </ScrollView>
                     <Text style={{fontSize: 10, color: '#fff'}}> fff </Text>
@@ -102,5 +107,12 @@ componentWillMount(){
     }
 }
 
-export default taskListScene;
+const mapStateToProps = ({cafes})=>{
+    return {cafes}
+};
 
+const mapActionsToProps = {
+    getCafes, setCafe
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(taskListScene);

@@ -8,21 +8,15 @@ import setupAppScene from "./scenes/setupAppScene";
 import addTaskScene from "./scenes/addTaskScene";
 import calendarScene from "./scenes/calendarScene";
 import taskScene from "./scenes/taskScene";
-//import App from './scenes/taskListScene';
-//import App from './scenes/calendarScene';
-//import App from './scenes/setupAppScene';
-//import App from './scenes/addTaskScene';
 
-class Routerss extends React.Component {
-    render() {
-        return <Router>
+const Routerss = () => <Router>
+
             <Scene key="root">
-
 
                     <Scene key="login"
                            component={loginScene}
                            title="login"
-                           initial
+                           //initial
                            hideNavBar
                     />
 
@@ -40,7 +34,7 @@ class Routerss extends React.Component {
                     <Scene key="taskList"
                            component={taskListScene}
                            title=""
-                           //initial
+                           initial
                            hideNavBar
                     />
                     <Scene key="addTask"
@@ -60,8 +54,6 @@ class Routerss extends React.Component {
                     />
 
             </Scene>
-        </Router>
-    }
-}
+        </Router>;
 
 export default Routerss;

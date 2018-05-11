@@ -84,6 +84,19 @@ export const signUp = ({name, email, password}) => {
 
 
 export const checkAuth = () => {
+
+    // AsyncStorage.clear();
+    // Actions.login();
+
+
+    AsyncStorage.getItem('apiToken', (err, apiToken) =>{
+        if (apiToken){
+            return Actions.taskList();
+        }
+        //console.log(apiToken);
+        Actions.login();
+
+    })
     AsyncStorage.clear();
     Actions.login();
 
