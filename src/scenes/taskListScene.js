@@ -11,6 +11,7 @@ import Header from '../components/header';
 import Loader from "../components/loader";
 import Nav from '../components/nav';
 import {getCafes, setCafe} from '../actions/cafeActions';
+import Toaster from '../components/toaster';
 
 class taskListScene extends Component {
 
@@ -54,6 +55,9 @@ class taskListScene extends Component {
         //     })
     }
 
+    componentDidMount(){
+        Toaster.showMessage('3`5`5`6`6`2');
+    }
 
     taskPress(cafe) {
 
@@ -92,7 +96,9 @@ class taskListScene extends Component {
                 </Header>
                 <Layout>
                     <ScrollView>
-
+                        <TouchableOpacity onPress={()=>{Toaster.showMessage('push')}}>
+                            <Text style={{color:'green'}}>Press</Text>
+                        </TouchableOpacity>
                         {this.props.cafes.loading ? <Loader/> : null}
                         {this.renderCafes()}
                     </ScrollView>
