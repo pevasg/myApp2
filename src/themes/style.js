@@ -171,9 +171,16 @@ const styles = StyleSheet.create({
     //addTaskScene
     fieldAddInput:{
         //height: 160,
+        borderRadius: 5,
+        margin: 5,
         justifyContent: 'center',
         backgroundColor: '#41414a',
     },
+    datePickerInput:{
+        alignItems: 'center',
+        padding: 5,
+    },
+
     buttonSaveTask:{
         alignSelf: 'flex-end',
     }
