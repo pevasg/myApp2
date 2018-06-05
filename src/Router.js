@@ -23,7 +23,6 @@ const Routerss = () => <Router>
                     <Scene key="welcome"
                            component={welcomeScene}
                            title="LoGiN"
-                           //initial
                            hideNavBar
                     />
                     <Scene key="setup"
@@ -34,12 +33,13 @@ const Routerss = () => <Router>
                     <Scene key="taskList"
                            component={taskListScene}
                            title=""
-                           initial
+                           //initial
                            hideNavBar
                     />
                     <Scene key="addTask"
                            component={addTaskScene}
                            title=""
+                           initial
                            hideNavBar
                     />
                     <Scene key="task"

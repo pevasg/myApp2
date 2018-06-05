@@ -25,7 +25,7 @@ class loginScene extends Component {
 
     componentWillMount(){
         //checkAuth();
-        console.log('props', this.props);
+        //console.log('props', this.props);
     }
 
     loginButtonPress() {
@@ -147,7 +147,7 @@ class loginScene extends Component {
 
 const mapStateToProps = (store) => {
     const {auth} = store;
-    console.log('store', store);
+    //console.log('store', store);
     return {auth}
 };
 export default connect(mapStateToProps)(loginScene);

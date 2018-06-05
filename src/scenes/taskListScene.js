@@ -12,6 +12,7 @@ import Loader from "../components/loader";
 import Nav from '../components/nav';
 import {getCafes, setCafe} from '../actions/cafeActions';
 import Toaster from '../components/toaster';
+import {signUp} from "../actions/authActions";
 
 class taskListScene extends Component {
 
@@ -89,6 +90,8 @@ class taskListScene extends Component {
 
     //const AnimatedIcon = Animated.createAnimatedComponent(Icon); - для анімації іконок, ще поки не розбрався
 
+
+
     render() {
         return (
             <View style={style.container}>
@@ -102,9 +105,8 @@ class taskListScene extends Component {
                         {this.props.cafes.loading ? <Loader/> : null}
                         {this.renderCafes()}
                     </ScrollView>
-                    <Text style={{fontSize: 10, color: '#fff'}}> fff </Text>
-                    <TouchableOpacity>
-                        <Icon style={style.navIcon2} name={'plus'} size={65} />
+                    <TouchableOpacity onPress={()=>Actions.addTask()} style={style.buttonAddTask}>
+                        <Icon name={'plus'} size={77} style={style.navIcon2}/>
                     </TouchableOpacity>
                 </Layout>
                 <Nav/>

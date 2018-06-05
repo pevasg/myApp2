@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#323138',
         flex:1,
-        justifyContent: 'center'
+        justifyContent: 'center' 
     },
 
     //welcomeScene
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     myButtonInside:{
         alignSelf: 'center',
         color: "#dcdde1",
-        fontSize: defaultFontSize * 1.1
+        fontSize: defaultFontSize * 1.25
     },
 
     //taskListScenes
@@ -154,14 +154,28 @@ const styles = StyleSheet.create({
         color: '#dcdde1',
         alignSelf: 'center'
     },
+    buttonAddTask: {
+        backgroundColor: '#FFA040',
+        position: 'absolute',
+        width:60,
+        height:60,
+        borderRadius: 30,
+        bottom: 10,
+        right: 10,
+        //opacity: 0.9,
+    },
     navIcon2: {
-        color: '#dcdde1',
+        marginLeft: -8,
+    },
+
+    //addTaskScene
+    fieldAddInput:{
+        //height: 160,
+        justifyContent: 'center',
+        backgroundColor: '#41414a',
+    },
+    buttonSaveTask:{
         alignSelf: 'flex-end',
-        alignItems: 'flex-end',
-        zIndex: 10,
-        //position: 'absoluteFillObject',
-        //top: 10,
-        backgroundColor: '#fff'
     }
 
 });

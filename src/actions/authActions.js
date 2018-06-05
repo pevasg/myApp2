@@ -59,16 +59,17 @@ export const signUp = ({name, email, password}) => {
         .createUserWithEmailAndPassword(email, password)
         .then( () => {
             const curUser = firebase.auth().currentUser;
+            console.log(firebase.auth().currentUser);
             return curUser.sendEmailVerification({})
                 .then(()=>{
-                firebase.database().ref('users/${curUser.uid}')
+                firebase.database().ref('users/'+curUser.uid)
                     .set ({
                         name,
                         email
                     });
                 });
-            //console.log(data);
-            //return Promise.resolve(data)
+
+            return Promise.resolve(data)
         }).catch(error=>{
             //console.log(error);
             return Promise.reject(error);
@@ -93,7 +94,7 @@ export const checkAuth = () => {
         if (apiToken){
             return Actions.taskList();
         }
-        //console.log(apiToken);
+        console.log(apiToken);
         Actions.login();
 
     })
