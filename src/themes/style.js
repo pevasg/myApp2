@@ -24,8 +24,18 @@ export const cafeListStyle = StyleSheet.create({
         color: '#000000'
     },
     loader:{
+        flex: 1,
+        justifyContent: 'center',
         paddingTop: 25,
-        alignSelf: 'center'
+        //backgroundColor: '#41414a',
+        opacity: 0.8,
+        //position: 'absolute',
+        //height: '100%',
+        //width: '100%',
+
+        // paddingTop: 25,
+        // alignSelf: 'center',
+
     }
 });
 
@@ -183,6 +193,10 @@ const styles = StyleSheet.create({
 
     buttonSaveTask:{
         alignSelf: 'flex-end',
+    },
+    toggleSwitch:{
+        alignItems: 'center',
+        padding: 8,
     }
 
 });

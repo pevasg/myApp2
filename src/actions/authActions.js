@@ -97,7 +97,7 @@ export const checkAuth = () => {
         console.log(apiToken);
         Actions.login();
 
-    })
+    });
     AsyncStorage.clear();
     Actions.login();
 

@@ -16,7 +16,7 @@ const Routerss = () => <Router>
                     <Scene key="login"
                            component={loginScene}
                            title="login"
-                           //initial
+                           initial
                            hideNavBar
                     />
 
@@ -39,7 +39,7 @@ const Routerss = () => <Router>
                     <Scene key="addTask"
                            component={addTaskScene}
                            title=""
-                           initial
+                           //initial
                            hideNavBar
                     />
                     <Scene key="task"

@@ -1,6 +1,7 @@
-import { View, Text, TextInput } from 'react-native';
+import { View, TextInput, Picker } from 'react-native';
 import React, {Component} from 'react';
 import DatePicker from 'react-native-datepicker';
+import ToggleSwitch from 'toggle-switch-react-native';
 
 import style from '../themes/style';
 import Header from '../components/header';
@@ -8,26 +9,24 @@ import Layout from '../components/layout';
 import Button from '../components/button';
 import {Actions} from "react-native-router-flux/index";
 import {isMoment} from 'moment/moment'
+import {addTask, getCafes} from '../actions/index';
+import {getTask} from "../actions";
 
 class addTaskScene extends Component {
     constructor() {
         super();
         this.state = {
             textTask: '',
-            timeTask: '',
-            dateTask: '',
             repeatTask: false,
-            date: '',
-            time: ''
+            date: new Date(),
+            time: new Date()
         };
     };
 
-    //  componentWillMount(){
-    // //     //const time = Moment().format('MMM Do YY');
-    // //     console.log(isMoment())
-    //      console.log(this.state)
-    //  }
-
+    addButtonPress(){
+        addTask(this.state);
+        //getTask(this.state);
+    }
 
     render() {
         return (
@@ -36,31 +35,13 @@ class addTaskScene extends Component {
                 <Layout>
                     <View style={style.fieldAddInput}>
                         <TextInput
+                            onChangeText={(textTask) => this.setState({textTask})}
+                            value={ this.state.textTask }
                             style={{color: '#858491'}}
-                            placeholder='Need to do..'
+                            placeholder='Remind about..'
                             placeholderTextColor={'#858491'}
                             underlineColorAndroid={'transparent'}
                             multiline={true}
-                            fontSize={20}
-                            maxLength={160}
-                        />
-                    </View>
-                    <View style={style.fieldAddInput}>
-                        <TextInput
-                            style={{color: '#858491'}}
-                            placeholder='Date'
-                            placeholderTextColor={'#858491'}
-                            underlineColorAndroid={'transparent'}
-                            fontSize={20}
-                            maxLength={160}
-                        />
-                    </View>
-                    <View style={style.fieldAddInput}>
-                        <TextInput
-                            style={{color: '#858491'}}
-                            placeholder='Time'
-                            placeholderTextColor={'#858491'}
-                            underlineColorAndroid={'transparent'}
                             fontSize={20}
                             maxLength={160}
                         />
@@ -120,13 +101,24 @@ class addTaskScene extends Component {
                             onDateChange={(time) => {this.setState({time: time})}}
                         />
                     </View>
-
-
+                    <View style={style.toggleSwitch}>
+                        <ToggleSwitch
+                            isOn={false}
+                            onColor='#FFA040'
+                            offColor='#41414a'
+                            label='push notifications   '
+                            labelStyle={{color: '#858491', fontSize:25}}
+                            size='medium'
+                            //onToggle={ (isOn) => console.log('changed to : ', isOn) }
+                            onToggle={ (isOn) => {this.setState({repeatTask: isOn})}}
+                        />
+                    </View>
 
                     <View style={style.buttonSaveTask}>
                         <Button
                             text='Add'
-                            click={()=>Actions.taskList()}
+                            //click={()=>addButtonPress()}
+                            click={ this.addButtonPress.bind(this) }
                             color={ '#FFA040' }
                             width={100}
                         />
